@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/15181efa86.js" crossorigin="anonymous"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML"></script>
+  <title>THQN Algorithm Explorer</title>
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+  <link rel="stylesheet" type="text/css" href="/style.css">
+   <style>
+    .code .control {
+  background-color: black;
+}
+  </style>
+</head>
+<body>
+  <script src="/script.js"></script>
+  <script>
+    window.onload = function() {
+      openNav();
+    };
+  </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll("pre code").forEach(function(block) {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a class = "big">introduction</a>
+  <a href="/index.html" class = "med">preface</a>
+  <a class="big">beginning</a>
+  <a href="comp.html" class="med">complexity</a>
+  <a href="sort.html" class="med">sort</a>
+  <a href="bin.html" class="med">binary search</a>
+  <a href="point.html" class="med">two pointers</a>
+  <a href="archive.html" class="big">archive</a>
+</div>
+  <div id = "main" class = "code1">
+  <section class="hero is-medium">
+    <div class="hero-head">
+      <div class="container">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open
+              <img src = "/img/weee.gif" width = "40" height="30"></span>
+            </div>
+            <div class="navbar-end">
+              <a class="navbar-item is-active btn" href = "index.html">
+                Home
+              </a>
+              <a class="btn" href="https://discord.gg/ZrBPk9JayV" target="_none" role="button"><i class="fab fa-discord"></i> Discord</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <img src="/img/logovnoi.png" width="300" height="140">
+        <h2 class="subtitle">
+          THQN Algorithm Explorer
+        </h2>
+      </div>
+    </div>
+  </section>
+  <section class="blog-posts">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-two-thirds">
+        <div>
+          <div class="container">
+            <h1 class="title">Code Storage</h1>
+    <div class="field">
+      <label class="label text">Tiêu đề:</label>
+      <div class="control code1">
+        <input id="titleInput" class="input code1" type="text">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label text">Đoạn code:</label>
+      <div class="control code1">
+        <textarea id="codeInput" class="textarea code1" placeholder="Code............................................................................................................................................................"></textarea>
+      </div>
+    </div>
+    <br>
+    <div class="field">
+      <div class="control text">
+        <a onclick="saveCode()" class=" is-active btn">Archive</a>
+      </div>
+    </div>
+          </div>
+    <br>
+    <h2 class="subtitle big">List:</h2>
+            <ul id="codeList" class="table-container">
+            </ul>
+          </div>
+        </div>
+        <div class="column is-one-third">
+          <div class="container">
+            <h2 class="subtitle big">Board</h2>
+            <table class="table is-fullwidth">
+              <thead>
+                <tr>
+                  <th class = "code1"><span class = "text">Title</span></th>
+                  <th class = "code1"><span class = "text">Action</span></th>
+                </tr>
+              </thead>
+              <tbody id="tableList" class = "code1">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function saveCode() {
+      const title = document.getElementById('titleInput').value;
+      const code = document.getElementById('codeInput').value;
+
+      if (title.trim() === '' || code.trim() === '') {
+        alert('Vui lòng nhập đầy đủ tiêu đề và đoạn code.');
+        return;
+      }
+
+      if (typeof(Storage) !== 'undefined') {
+        let codeList = JSON.parse(localStorage.getItem('codeList')) || [];
+
+        codeList.push({ title, code });
+
+        localStorage.setItem('codeList', JSON.stringify(codeList));
+
+        displayCodeList();
+      } else {
+        alert('Trình duyệt của bạn không hỗ trợ Local Storage.');
+      }
+    }
+
+    function deleteCode(index) {
+      let codeList = JSON.parse(localStorage.getItem('codeList')) || [];
+
+      codeList.splice(index, 1);
+
+      localStorage.setItem('codeList', JSON.stringify(codeList));
+
+      displayCodeList();
+    }
+
+     function displayCodeList() {
+      const codeList = JSON.parse(localStorage.getItem('codeList')) || [];
+      const codeListElement = document.getElementById('codeList');
+      const tableListElement = document.getElementById('tableList');
+
+      codeListElement.innerHTML = '';
+      tableListElement.innerHTML = '';
+
+      codeList.forEach((item, index) => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+          <strong class="text">${item.title}:</strong><br>
+          <pre class="code"><code class="language-cpp">${item.code}</code></pre>
+          <button class="delete btn" onclick="deleteCode(${index})"></button><br><br>
+        `;
+        codeListElement.appendChild(listItem);
+
+        const tableRow = document.createElement('tr');
+        tableRow.innerHTML = `
+          <td class = "code1">${item.title}</td>
+          <td class = "code1"><button class="delete btn" onclick="deleteCode(${index})"></button></td>
+        `;
+        tableListElement.appendChild(tableRow);
+      });
+
+      document.querySelectorAll("pre code").forEach(function(block) {
+        hljs.highlightBlock(block);
+      });
+    }
+
+    displayCodeList();
+  </script>
+    </div>
+  </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THQN Algorithm Explorer</title>
+  <script src="https://kit.fontawesome.com/15181efa86.js" crossorigin="anonymous"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML"></script>
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+  <script src="/script.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll("pre code").forEach(function(block) {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
+  <script>
+    window.onload = function() {
+      openNav();
+    };
+  </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a class = "big">introduction</a>
+  <a href="/index.html" class = "med">preface</a>
+  <a class="big">beginning</a>
+  <a href="comp.html" class="med">complexity</a>
+  <a href="sort.html" class="med">sort</a>
+  <a href="bin.html" class="med">binary search</a>
+  <a href="point.html" class="med">two pointers</a>
+  <a href="archive.html" class="big">archive</a>
+</div>
+<div id = "main" class = "code1">
+<section class="hero is-medium">
+    <div class="hero-head">
+      <div class="container">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open
+              <img src = "/img/weee.gif" width = "40" height="30"></span>
+            </div>
+            <div class="navbar-end">
+              <a class="navbar-item is-active btn" href = "index.html">
+                Home
+              </a>
+              <a class="btn" href="https://discord.gg/ZrBPk9JayV" target="_none" role="button"><i class="fab fa-discord"></i> Discord</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <img src="/img/logovnoi.png" width="300" height="140">
+        <h2 class="subtitle">
+          THQN Algorithm Explorer
+        </h2>
+      </div>
+    </div>
+  </section>
+  <section class="blog-posts">
+  <div class="container">
+    <div class="columns">
+      <div>
+      <p class = "text">Tìm kiếm nhị phân là một thuật toán tìm kiếm hiệu quả được sử dụng để tìm kiếm một phần tử cụ thể trong một mảng đã được sắp xếp theo thứ tự tăng dần. Ý tưởng của thuật toán là liên tục chia mảng thành hai phần và so sánh phần tử tại điểm chia với phần tử cần tìm. Nếu phần tử tại điểm chia bằng phần tử cần tìm, ta đã tìm thấy và trả về vị trí của nó. Nếu phần tử tại điểm chia lớn hơn phần tử cần tìm, ta tiếp tục tìm kiếm trong nửa đầu tiên của mảng, ngược lại ta tiếp tục tìm kiếm trong nửa sau.<p>
+      <br>
+      <br>
+      <p class = "text">Thuật toán chỉ hoạt động trên các mảng đã được sắp xếp. Tuy nhiên, việc sắp xếp mảng có độ phức tạp là \(O(n\log n)\) (sử dụng thuật toán như Merge Sort, Quick Sort), nhưng thời gian tìm kiếm nhị phân là \(O(\log n)\), rất hiệu quả so với tìm kiếm tuyến tính với độ phức tạp \(O(n)\).</p>
+      <br>
+      <br>
+<li class = "text">Example:</li>
+        <br>
+        <br>
+<pre class = "code"><code class = "language-cpp">#include &lt;iostream>
+#include &lt;vector>
+
+using namespace std;
+
+// Hàm tìm kiếm nhị phân
+int binarySearch(vector&lt;int>& arr, int target) {
+    int left = 0;
+    int right = arr.size() - 1;
+
+    while (left &lt;= right) {
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == target) {
+            return mid; // Trả về vị trí của phần tử cần tìm
+        } else if (arr[mid] &lt; target) {
+            left = mid + 1; // Tiếp tục tìm kiếm trong nửa phải của mảng
+        } else {
+            right = mid - 1; // Tiếp tục tìm kiếm trong nửa trái của mảng
+        }
+    }
+
+    return -1; // Không tìm thấy, trả về -1
+}
+
+int main() {
+    vector&lt;int> arr = {1, 3, 5, 7, 9, 11, 13, 15, 17};
+    int target = 9;
+
+    int result = binarySearch(arr, target);
+
+    if (result != -1) {
+        cout &lt;&lt; "Phan tu " &lt;&lt; target &lt;&lt; " co tai vi tri " &lt;&lt; result;
+    } else {
+        cout &lt;&lt; "Khong tim thay phan tu " &lt;&lt; target &lt;&lt; " trong mang.";
+    }
+
+    return 0;
+}</code></pre>
+        <br>
+        <br>
+      <li class = "text">Độ phức tạp thời gian: \(O(\log n)\). Mỗi lần lặp, mảng được chia thành hai phần, giảm đi một nửa kích thước của mảng cần tìm kiếm. Vì vậy, số lần lặp tối đa là \log n)\ , trong đó \n\ là số lượng phần tử trong mảng.
+</li>
+        <br>
+        <br>
+      <li class = "text">Độ phức tạp không gian: \(O(1)\). Thuật toán chỉ sử dụng một số biến cố định không phụ thuộc vào kích thước đầu vào. Không có bất kỳ cấu trúc dữ liệu bổ sung nào được sử dụng trong thuật toán.
+</li>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+</div>
+</body>
+</html>

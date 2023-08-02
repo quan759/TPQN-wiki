@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THQN Algorithm Explorer</title>
+  <script src="https://kit.fontawesome.com/15181efa86.js" crossorigin="anonymous"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML"></script>
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+  <script src="/script.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll("pre code").forEach(function(block) {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
+  <script>
+    window.onload = function() {
+      openNav();
+    };
+  </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a class = "big">introduction</a>
+  <a href="/index.html" class = "med">preface</a>
+  <a class="big">beginning</a>
+  <a href="comp.html" class="med">complexity</a>
+  <a href="sort.html" class="med">sort</a>
+  <a href="bin.html" class="med">binary search</a>
+  <a href="point.html" class="med">two pointers</a>
+  <a href="archive.html" class="big">archive</a>
+</div>
+<div id = "main" class = "code1">
+<section class="hero is-medium">
+    <div class="hero-head">
+      <div class="container">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open
+              <img src = "/img/weee.gif" width = "40" height="30"></span>
+            </div>
+            <div class="navbar-end">
+              <a class="navbar-item is-active btn" href = "index.html">
+                Home
+              </a>
+              <a class="btn" href="https://discord.gg/ZrBPk9JayV" target="_none" role="button"><i class="fab fa-discord"></i> Discord</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <img src="/img/logovnoi.png" width="300" height="140">
+        <h2 class="subtitle">
+          THQN Algorithm Explorer
+        </h2>
+      </div>
+    </div>
+  </section>
+  <section class="blog-posts">
+  <div class="container">
+    <div class="columns">
+      <div>
+      <p class = "text">Two Pointers (2 con trỏ) là một kỹ thuật được sử dụng phổ biến trong lập trình thi đấu để giải quyết các bài toán tối ưu hóa, tìm kiếm và sắp xếp mảng. Ý tưởng của kỹ thuật này là sử dụng hai con trỏ chạy trên mảng với các quy tắc cụ thể để giải quyết bài toán.<p>
+      <br>
+      <br>
+        <p class = "text">Kỹ thuật Two Pointers được sử dụng trong nhiều bài toán như tìm kiếm cặp số có tổng bằng một số x, tìm kiếm ba số có tổng bằng một số x, tìm kiếm đoạn con có tổng lớn nhất, tìm kiếm đoạn con có tổng bằng một số x, v.v. Kỹ thuật này cũng có thể được kết hợp với các phương pháp khác để giải quyết các bài toán phức tạp hơn.</p>
+        <br>
+        <br>
+      <li class = "text">Hai con trỏ thường được đặt ở hai đầu mảng hoặc ở các vị trí khác nhau trên mảng.</li>
+      <br>
+      <br>
+<li class = "text">Các con trỏ cùng di chuyển hoặc di chuyển theo quy tắc cụ thể dựa trên yêu cầu của bài toán.</li>
+        <br>
+        <br>
+        <li class = "text">Tại mỗi bước, ta kiểm tra điều kiện để di chuyển con trỏ sao cho đạt được kết quả mong muốn.</li>
+        <br>
+        <br>
+        <li class = "text">Kỹ thuật Two Pointers thường giúp giảm đáng kể độ phức tạp thời gian so với các phương pháp tìm kiếm và sắp xếp thông thường.</li>
+        <br>
+        <br>
+        <li class = "text">Example:</li>
+        <br>
+        <br>
+<pre class = "code"><code class = "language-cpp">#include &lt;iostream>
+#include &lt;vector>
+#include &lt;algorithm>
+
+using namespace std;
+
+vector&lt;int> twoSum(vector&lt;int>& nums, int target) {
+    vector&lt;int> result;
+    int left = 0;
+    int right = nums.size() - 1;
+
+    // Sắp xếp mảng
+    sort(nums.begin(), nums.end());
+
+    while (left &lt; right) {
+        int sum = nums[left] + nums[right];
+        if (sum == target) {
+            // Tìm thấy kết quả, lưu vào vector result
+            result.push_back(nums[left]);
+            result.push_back(nums[right]);
+            return result;
+        } else if (sum &lt; target) {
+            // Tăng con trỏ left nếu tổng nhỏ hơn target
+            left++;
+        } else {
+            // Giảm con trỏ right nếu tổng lớn hơn target
+            right--;
+        }
+    }
+
+    // Không tìm thấy kết quả
+    return result;
+}
+
+int main() {
+    vector&lt;int> nums = {2, 7, 11, 15};
+    int target = 9;
+
+    vector&lt;int> result = twoSum(nums, target);
+
+    if (result.size() == 2) {
+        cout &lt;&lt; "Hai so co tong bang " &lt;&lt; target &lt;&lt; " la: " &lt;&lt; result[0] &lt;&lt; " va " &lt;&lt; result[1];
+    } else {
+        cout &lt;&lt; "Khong tim thay hai so co tong bang " &lt;&lt; target &lt;&lt; " trong mang.";
+    }
+
+    return 0;
+}</code></pre>
+        <br>
+        <br>
+      <li class = "text">Độ phức tạp thời gian: \(O(n\log n)\) cho việc sắp xếp mảng và \(O(n)\) cho kỹ thuật 2 con trỏ
+</li>
+        <br>
+        <br>
+      <li class = "text">Độ phức tạp không gian: \(O(1)\). Thuật toán chỉ sử dụng một số biến cố định không phụ thuộc vào kích thước đầu vào. Không có bất kỳ cấu trúc dữ liệu bổ sung nào được sử dụng trong thuật toán.
+</li>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+</div>
+</body>
+</html>

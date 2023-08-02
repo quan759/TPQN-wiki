@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THQN Algorithm Explorer</title>
+  <script src="https://kit.fontawesome.com/15181efa86.js" crossorigin="anonymous"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML"></script>
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+  <script src="/script.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll("pre code").forEach(function(block) {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
+  <script>
+    window.onload = function() {
+      openNav();
+    };
+  </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a class = "big">introduction</a>
+  <a href="/index.html" class = "med">preface</a>
+  <a class="big">beginning</a>
+  <a href="comp.html" class="med">complexity</a>
+  <a href="sort.html" class="med">sort</a>
+  <a href="bin.html" class="med">binary search</a>
+  <a href="point.html" class="med">two pointers</a>
+  <a href="archive.html" class="big">archive</a>
+</div>
+<div id = "main" class = "code1">
+<section class="hero is-medium">
+    <div class="hero-head">
+      <div class="container">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open
+              <img src = "/img/weee.gif" width = "40" height="30"></span>
+            </div>
+            <div class="navbar-end">
+              <a class="navbar-item is-active btn" href = "index.html">
+                Home
+              </a>
+              <a class="btn" href="https://discord.gg/ZrBPk9JayV" target="_none" role="button"><i class="fab fa-discord"></i> Discord</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <img src="/img/logovnoi.png" width="300" height="140">
+        <h2 class="subtitle">
+          THQN Algorithm Explorer
+        </h2>
+      </div>
+    </div>
+  </section>
+  <section class="blog-posts">
+  <div class="container">
+    <div class="columns">
+      <div>
+      <p class = "text">Độ phức tạp của thuật toán (Algorithm Complexity) là một khái niệm quan trọng trong lập trình thi đấu. Nó đánh giá hiệu suất của một thuật toán dựa trên sự phụ thuộc của thời gian và không gian thực thi vào kích thước của đầu vào (input size). Độ phức tạp giúp đo lường sự tăng trưởng của tài nguyên (thời gian hoặc bộ nhớ) cần thiết khi kích thước của đầu vào tăng lên.<p>
+      <br>
+      <br>
+      <p class = "text">Có hai loại chính của độ phức tạp thuật toán:</p>
+      <br>
+      <br>
+<li class = "text">Độ phức tạp thời gian (Time Complexity): Đo lường thời gian thực thi của thuật toán khi kích thước của đầu vào tăng lên. Thời gian thực thi thường được đo bằng số bước thực thi (so sánh, gán, tính toán, v.v.) mà thuật toán thực hiện trên một máy tính.</li>
+        <br>
+        <br>
+<li class = "text">Độ phức tạp không gian (Space Complexity): Đo lường lượng bộ nhớ cần thiết để thực thi thuật toán khi kích thước của đầu vào tăng lên. Độ phức tạp không gian thường được đo bằng số lượng ô nhớ (bit, byte, word, v.v.) mà thuật toán sử dụng.</li>
+        <br>
+        <br>
+<p class = "text">Ký hiệu thường được sử dụng để biểu thị độ phức tạp là "\(O\)" (Big \(O\) notation). Độ phức tạp thời gian và không gian được đánh giá trong trường hợp tốt nhất, trung bình và xấu nhất, nhưng thường ta quan tâm đến trường hợp xấu nhất (worst-case complexity) vì nó đảm bảo hiệu suất của thuật toán trong mọi trường hợp.</p>
+        <br>
+        <br>
+<p class = "text">Một số loại độ phức tạp thời gian phổ biến và ví dụ của chúng:</p>
+      <br>
+      <br>
+      <li class = "text">Độ phức tạp \(O(1)\) - Hằng số: Thời gian thực thi không phụ thuộc vào kích thước đầu vào.</li>
+        <br>
+        <br>
+      <pre class = "code"><code class = "language-cpp">void printFirstElement(int arr[]) {
+    cout &lt;&lt; arr[0] &lt;&lt; endl;
+}</code></pre>
+        <br>
+        <br>
+        <li class = "text">Độ phức tạp \(O(\log n)\) - Logarithmic: Thời gian thực thi tăng theo logarit của kích thước đầu vào.</li>
+        <pre class = "code"><code class = "language-cpp">int binarySearch(int arr[], int n, int target) {
+    int left = 0;
+    int right = n - 1;
+    while (left &lt;= right) {
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == target) return mid;
+        if (arr[mid] &lt; target) left = mid + 1;
+        else right = mid - 1;
+    }
+    return -1;
+}</code></pre>
+        <br>
+        <br>
+        <li class = "text">Độ phức tạp \(O(n)\) - Tuyến tính: Thời gian thực thi tăng tuyến tính với kích thước đầu vào.</li>
+        <pre class = "code"><code class = "language-cpp">int sumArray(int arr[], int n) {
+    int sum = 0;
+    for (int i = 0; i &lt; n; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}</code></pre>
+        <br>
+        <br>
+        <li class = "text">Độ phức tạp \(O(n^2)\) - Bậc hai: Thời gian thực thi tăng theo bậc hai của kích thước đầu vào.</li>
+        <br>
+        <br>
+        <pre class = "code"><code class = "language-cpp">void bubbleSort(int arr[], int n) {
+    for (int i = 0; i &lt; n - 1; i++) {
+        for (int j = 0; j &lt; n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
+            }
+        }
+    }</code></pre>
+        <br>
+        <br>
+        <p class = "text">Độ phức tạp của thuật toán là một yếu tố quan trọng để xác định thuật toán nào sẽ hoạt động hiệu quả với các kích thước đầu vào khác nhau. Trong lập trình thi đấu, việc hiểu và đánh giá độ phức tạp của thuật toán giúp bạn tối ưu hóa chương trình của mình và tìm ra các giải pháp tối ưu cho các bài toán có độ khó lớn.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+</div>
+</body>
+</html>
