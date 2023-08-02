@@ -127,9 +127,13 @@
   </section>
 
   <script>
+    function escapeHTML(str) {
+      return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
     function saveCode() {
       const title = document.getElementById('titleInput').value;
-      const code = document.getElementById('codeInput').value;
+      var code = document.getElementById('codeInput').value;
+      code = escapeHTML(code);
 
       if (title.trim() === '' || code.trim() === '') {
         alert('Vui lòng nhập đầy đủ tiêu đề và đoạn code.');
@@ -158,6 +162,10 @@
 
       displayCodeList();
     }
+
+    function escapeHTML(html) {
+  return html.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
 
      function displayCodeList() {
       const codeList = JSON.parse(localStorage.getItem('codeList')) || [];
