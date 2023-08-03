@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THQN Algorithm Explorer</title>
+  <script src="https://kit.fontawesome.com/15181efa86.js" crossorigin="anonymous"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML"></script>
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+  <script src="/script.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll("pre code").forEach(function(block) {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
+  <script>
+    window.onload = function() {
+      openNav();
+    };
+  </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  
+  <a class = "big">introduction</a>
+  <a href="index.html" class = "med">about</a>
+  
+  <a class="big">preface</a>
+  <a href="first.html" class ="med">first cpp program</a>
+  <a href="arr.html" class="med">array</a>
+  <a href="inp.html" class="med">input & output with files</a>
+  <a href="comp.html" class="med">complexity</a>
+  
+  <a class="big">data structure & algorithms</a>
+  <a href="sort.html" class="med">sort</a>
+  <a href="point.html" class="med">two pointers</a>
+  <a href="bin.html" class="med">binary search</a>
+  
+  <a href="stack.html" class="med">stack</a>
+  <a href="prefix.html" class="med">prefix sum</a>
+  <a href="diff.html" class="med">difference array</a>
+
+  <a class="big">string</a>
+
+  <a class="big">mathematics</a>
+  
+  <a href="archive.html" class="big">archive</a>
+</div>
+<div id = "main" class = "code1">
+<section class="hero is-medium">
+    <div class="hero-head">
+      <div class="container">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+            </div>
+            <div class="navbar-end">
+              <a class="navbar-item is-active btn" href = "index.html">
+                Home
+              </a>
+              <a class="btn" href="https://discord.gg/ZrBPk9JayV" target="_none" role="button"><i class="fab fa-discord"></i> Discord</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <img src="/img/logovnoi.png" width="300" height="140">
+        <h2 class="subtitle">
+          THQN Algorithm Explorer <img src = "/img/weee.gif" width = "20" height="20">
+        </h2>
+      </div>
+    </div>
+  </section>
+  <section class="blog-posts">
+  <div class="container">
+    <div class="columns">
+      <div>
+      <p class = "text">
+        </p>
+        <p class = "text">
+          Hiện nay, cách nhập xuất dữ liệu khá phổ biến là phương thức "stdin" và "stdout". Tuy nhiên, trong lập trình thi đấu, vẫn còn nhiều giải đấu sử dụng cách nhập xuất dữ liệu và đọc và viết ra file.
+        </p>
+        <br>
+        <br>
+        <li class = "text">freopen()</p>
+        <br>
+        <br>
+        <pre class = "code"><code class = "language-cpp">freopen("file.inp", "r", stdin);
+freopen("file.out", "w", stdout);</code></pre>
+        <br>
+        <br>
+        <p class = "text">
+          Sau khi ghi 2 dòng trên vào trong hàm "main". Chúng ta sẽ nhập xuất bằng cin và cout.
+        </p>
+        <br>
+        <br>
+        <li class = "text">ifstream - ofstream</li>
+        <br>
+        <br>
+        <pre class = "code"><code class = "language-cpp">int a;
+ifstream fi("file.inp");
+fi &gt;&gt; a;
+ofstream fo("file.out");
+fo &lt;&lt; a;
+fi.close();
+fo.close();</code></pre>
+        <br>
+        <br>
+        <p class = "text">
+          Đối với cách này, chúng ta có thể tùy chỉnh tên 2 phương thức fi và fo để thuận tiện cho việc đọc và viết file. Lưu ý là nên đóng file sau khi kết thúc chương trình.
+        </p>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+</div>
+</body>
+</html>
