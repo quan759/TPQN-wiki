@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/style.css">
+  
 </head>
 <body>
   <script src="/script.js"></script>
@@ -43,19 +44,19 @@
   <a href="prefix.html" class="med">prefix sum</a>
   <a href="diff.html" class="med">difference array</a>
   <a href="archive.html" class="big">archive</a>
+  
 </div>
-<div id = "main" class = "code1">
+  <div id = "main" class = "code1">
 <section class="hero is-medium">
     <div class="hero-head">
       <div class="container">
         <nav class="navbar" role="navigation" aria-label="main navigation">
-
           <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
               <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
             </div>
             <div class="navbar-end">
-              <a class="navbar-item is-active btn" href = "index.html">
+              <a class="navbar-item is-active btn" href = "/index.html">
                 Home
               </a>
               <a class="btn" href="https://discord.gg/ZrBPk9JayV" target="_none" role="button"><i class="fab fa-discord"></i> Discord</a>
@@ -73,92 +74,97 @@
       </div>
     </div>
   </section>
+  
   <section class="blog-posts">
   <div class="container">
     <div class="columns">
       <div>
-      <p class = "text">Two Pointers (2 con trỏ) là một kỹ thuật được sử dụng phổ biến trong lập trình thi đấu để giải quyết các bài toán tối ưu hóa, tìm kiếm và sắp xếp mảng. Ý tưởng của kỹ thuật này là sử dụng hai con trỏ chạy trên mảng với các quy tắc cụ thể để giải quyết bài toán.<p>
+      <p class = "text">Stack (ngăn xếp) là một cấu trúc dữ liệu rất quan trọng trong lập trình, được sử dụng để lưu trữ dữ liệu theo nguyên tắc "First In Last Out" (FILO). Điều này có nghĩa là phần tử cuối cùng được đưa vào stack sẽ là phần tử đầu tiên được lấy ra khỏi stack.<p>
       <br>
       <br>
-        <p class = "text">Kỹ thuật Two Pointers được sử dụng trong nhiều bài toán như tìm kiếm cặp số có tổng bằng một số x, tìm kiếm ba số có tổng bằng một số x, tìm kiếm đoạn con có tổng lớn nhất, tìm kiếm đoạn con có tổng bằng một số x, v.v. Kỹ thuật này cũng có thể được kết hợp với các phương pháp khác để giải quyết các bài toán phức tạp hơn.</p>
-        <br>
-        <br>
-      <li class = "text">Hai con trỏ thường được đặt ở hai đầu mảng hoặc ở các vị trí khác nhau trên mảng.</li>
+      <p class = "text">Các thao tác cơ bản trên stack bao gồm:</p>
       <br>
       <br>
-<li class = "text">Các con trỏ cùng di chuyển hoặc di chuyển theo quy tắc cụ thể dựa trên yêu cầu của bài toán.</li>
+<li class = "text">Push: Thêm một phần tử vào đỉnh của stack.</li>
         <br>
         <br>
-        <li class = "text">Tại mỗi bước, ta kiểm tra điều kiện để di chuyển con trỏ sao cho đạt được kết quả mong muốn.</li>
+        <li class = "text">Pop: Xóa phần tử ở đỉnh của stack.</li>
         <br>
         <br>
-        <li class = "text">Kỹ thuật Two Pointers thường giúp giảm đáng kể độ phức tạp thời gian so với các phương pháp tìm kiếm và sắp xếp thông thường.</li>
+        <li class = "text">Top (Peek): Xem giá trị của phần tử ở đỉnh stack mà không xóa nó.</li>
         <br>
         <br>
-        <li class = "text">Example:</li>
+        <li class = "text">Empty: Kiểm tra xem stack có trống hay không.</li>
         <br>
         <br>
-<pre class = "code"><code class = "language-cpp">#include &lt;iostream>
-#include &lt;vector>
-#include &lt;algorithm>
+        <li class = "text">Size: Trả về số lượng phần tử trong stack.</li>
+        <br>
+        <br>
+<p class = "text">Stack thường được sử dụng trong việc giải quyết các bài toán liên quan đến đệ quy, xử lý các dấu ngoặc và theo dõi trạng thái của chương trình.</p>
+        <br>
+        <br>
+        <strong class = "text">Độ phức tạp thời gian:</strong>
+        <br>
+        <br>
+<li class = "text">Độ phức tạp thời gian của các thao tác cơ bản trên stack (push, pop, top, empty, size) là \(O(1)\). Điều này có nghĩa là thời gian thực hiện các thao tác này không phụ thuộc vào kích thước của stack và luôn là cố định.</li>
+        <br>
+        <br>
+<strong class = "text">Độ phức tạp không gian:</strong>
+      <br>
+      <br>
+      <li class = "text">Độ phức tạp không gian của stack là \(O(n)\), trong đó \(n\) là số lượng phần tử có trong stack.</li>
+        <br>
+        <br>
+        <li class = "text">Example: </li>
+        <br>
+        <br>
+      <pre class = "code"><code class = "language-cpp">#include &lt;iostream>
+#include &lt;stack>
+#include &lt;string>
 
 using namespace std;
 
-vector&lt;int> twoSum(vector&lt;int>& nums, int target) {
-    vector&lt;int> result;
-    int left = 0;
-    int right = nums.size() - 1;
-
-    // Sắp xếp mảng
-    sort(nums.begin(), nums.end());
-
-    while (left &lt; right) {
-        int sum = nums[left] + nums[right];
-        if (sum == target) {
-            // Tìm thấy kết quả, lưu vào vector result
-            result.push_back(nums[left]);
-            result.push_back(nums[right]);
-            return result;
-        } else if (sum &lt; target) {
-            // Tăng con trỏ left nếu tổng nhỏ hơn target
-            left++;
-        } else {
-            // Giảm con trỏ right nếu tổng lớn hơn target
-            right--;
-        }
+string reverseString(string input) {
+    stack%lt;char> stk;
+    for (char c : input) {
+        stk.push(c);
     }
 
-    // Không tìm thấy kết quả
-    return result;
+    string reversedStr = "";
+    while (!stk.empty()) {
+        reversedStr += stk.top();
+        stk.pop();
+    }
+
+    return reversedStr;
 }
 
 int main() {
-    vector&lt;int> nums = {2, 7, 11, 15};
-    int target = 9;
+    string input;
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
 
-    vector&lt;int> result = twoSum(nums, target);
-
-    if (result.size() == 2) {
-        cout &lt;&lt; "Hai so co tong bang " &lt;&lt; target &lt;&lt; " la: " &lt;&lt; result[0] &lt;&lt; " va " &lt;&lt; result[1];
-    } else {
-        cout &lt;&lt; "Khong tim thay hai so co tong bang " &lt;&lt; target &lt;&lt; " trong mang.";
-    }
+    string reversed = reverseString(input);
+    cout &lt;&lt; "Reversed string: " &lt;&lt; reversed &lt;&lt; endl;
 
     return 0;
 }</code></pre>
         <br>
         <br>
-      <li class = "text">Độ phức tạp thời gian: \(O(n\log n)\) cho việc sắp xếp mảng và \(O(n)\) cho kỹ thuật 2 con trỏ
-</li>
+<li class = "text">Trong ví dụ trên, chúng ta sử dụng std::stack trong thư viện &lt;stack> để tạo một stack kiểu char để lưu trữ các ký tự trong chuỗi ban đầu.</li>
         <br>
         <br>
-      <li class = "text">Độ phức tạp không gian: \(O(1)\). Thuật toán chỉ sử dụng một số biến cố định không phụ thuộc vào kích thước đầu vào. Không có bất kỳ cấu trúc dữ liệu bổ sung nào được sử dụng trong thuật toán.
-</li>
+<li class = "text">Sau đó, chúng ta duyệt qua chuỗi ban đầu và thêm từng ký tự vào stack bằng cách sử dụng hàm push.</li>
+        <br>
+        <br>
+<li class = "text">Sau khi đã lưu trữ các ký tự vào stack, chúng ta bắt đầu lấy các ký tự từ stack và nối chúng vào một chuỗi mới để tạo thành chuỗi đảo ngược.</li>
+        <br>
+        <br>
+        <li class = "text">Cuối cùng, chúng ta in ra chuỗi đảo ngược.</li>
       </div>
     </div>
   </div>
   </div>
 </section>
-</div>
 </body>
 </html>

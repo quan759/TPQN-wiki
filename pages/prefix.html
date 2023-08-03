@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THQN Algorithm Explorer</title>
+  <script src="https://kit.fontawesome.com/15181efa86.js" crossorigin="anonymous"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML"></script>
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  
+</head>
+<body>
+  <script src="/script.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll("pre code").forEach(function(block) {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
+  <script>
+    window.onload = function() {
+      openNav();
+    };
+  </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a class = "big">introduction</a>
+  <a href="/index.html" class = "med">preface</a>
+  <a class="big">beginning</a>
+  <a href="comp.html" class="med">complexity</a>
+  <a href="sort.html" class="med">sort</a>
+  <a href="bin.html" class="med">binary search</a>
+  <a href="point.html" class="med">two pointers</a>
+  <a class = "big">data structure</a>
+  <a href="stack.html" class="med">stack</a>
+  <a href="prefix.html" class="med">prefix sum</a>
+  <a href="diff.html" class="med">difference array</a>
+  <a href="archive.html" class="big">archive</a>
+  
+</div>
+  <div id = "main" class = "code1">
+<section class="hero is-medium">
+    <div class="hero-head">
+      <div class="container">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+            </div>
+            <div class="navbar-end">
+              <a class="navbar-item is-active btn" href = "/index.html">
+                Home
+              </a>
+              <a class="btn" href="https://discord.gg/ZrBPk9JayV" target="_none" role="button"><i class="fab fa-discord"></i> Discord</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <img src="/img/logovnoi.png" width="300" height="140">
+        <h2 class="subtitle">
+          THQN Algorithm Explorer <img src = "/img/weee.gif" width = "20" height="20">
+        </h2>
+      </div>
+    </div>
+  </section>
+  
+  <section class="blog-posts">
+  <div class="container">
+    <div class="columns">
+      <div>
+      <p class = "text">Prefix Sum (tổng cộng dồn) là một kỹ thuật được sử dụng để tính tổng các phần tử trong mảng một cách hiệu quả. Ý tưởng chính của Prefix Sum là tính tổng các phần tử từ đầu mảng đến mỗi vị trí và lưu kết quả vào một mảng mới. Điều này giúp giảm đáng kể thời gian tính toán tổng các phần tử trong mảng, đặc biệt là khi cần tính tổng nhiều phạm vi con trong mảng gốc.<p>
+      <br>
+      <br>
+      <p class = "text">Khi đã tính được mảng prefix sum \(f[]\), công thức \(f[r] - f[l-1]\) được sử dụng để tính tổng các phần tử trong đoạn từ vị trí \(l\) đến vị trí \(r\) trong mảng gốc. Điều này có thể được hiểu như sau:</p>
+      <br>
+      <br>
+<li class = "text">Từ mảng prefix sum \(f\), \(f[r]\) lưu trữ tổng của các phần tử từ vị trí đầu đến vị trí \(r\) trong mảng gốc. \(f[l-1]\) lưu trữ tổng của các phần tử từ vị trí đầu đến vị trí \(l-1\) trong mảng gốc.</li>
+        <br>
+        <br>
+        <li class = "text">Do đó, \(f[r] - f[l-1]\) chính là tổng của các phần tử từ vị trí \(l\) đến vị trí \(r\) trong mảng gốc.</li>
+        <br>
+        <br>
+        <strong class = "text">Độ phức tạp thời gian:</strong>
+        <br>
+        <br>
+<li class = "text">Độ phức tạp thời gian để tính mảng prefix sum ban đầu là \(O(n)\), trong đó \(n\) là số lượng phần tử trong mảng gốc.</li>
+        <br>
+        <br>
+        <li class = "text">Độ phức tạp thời gian để tính tổng của các phần tử trong đoạn từ vị trí \(l\) đến \(r\) là \(O(1)\), bởi vì chúng ta chỉ cần thực hiện một phép trừ và không cần tính toán lại các tổng phần tử trong mảng gốc.</li>
+
+<strong class = "text">Độ phức tạp không gian:</strong>
+      <br>
+      <br>
+      <li class = "text">Độ phức tạp không gian để lưu trữ mảng prefix sum là \(O(n)\), bởi vì chúng ta cần một mảng có cùng kích thước với mảng gốc để lưu kết quả.</li>
+        <br>
+        <br>
+        <li class = "text">Example: </li>
+        <br>
+        <br>
+      <pre class = "code"><code class = "language-cpp">#include &lt;iostream>
+#include &lt;vector>
+
+using namespace std;
+
+vector&lt;int> calculatePrefixSum(const vector&lt;int>& arr) {
+    int n = arr.size();
+    vector&lt;int> prefixSum(n);
+    prefixSum[0] = arr[0];
+
+    for (int i = 1; i &lt; n; i++) {
+        prefixSum[i] = prefixSum[i - 1] + arr[i];
+    }
+
+    return prefixSum;
+}
+
+int sumInRange(const vector&lt;int>& prefixSum, int l, int r) {
+    if (l == 0) {
+        return prefixSum[r];
+    } else {
+        return prefixSum[r] - prefixSum[l - 1];
+    }
+}
+
+int main() {
+    vector&lt;int> arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    vector&lt;int> prefixSum = calculatePrefixSum(arr);
+
+    int l = 2, r = 5;
+    int sum = sumInRange(prefixSum, l, r);
+
+    cout &lt;&lt; "Sum of elements in range [" &lt;&lt; l &lt;&lt; ", " &lt;&lt; r &lt;&lt; "] is: " &lt;&lt; sum &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+        <br>
+        <br>
+<li class = "text">Trong ví dụ trên, chúng ta sử dụng hàm calculatePrefixSum để tính mảng prefix sum từ mảng gốc.</li>
+        <br>
+        <br>
+<li class = "text">Sau đó, chúng ta sử dụng hàm sumInRange để tính tổng các phần tử trong đoạn từ vị trí \(l\) đến \(r\) trong mảng gốc bằng cách sử dụng công thức \(f[r] - f[l-1]\).</li>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+</body>
+</html>

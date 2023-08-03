@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THQN Algorithm Explorer</title>
+  <script src="https://kit.fontawesome.com/15181efa86.js" crossorigin="anonymous"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML"></script>
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  
+</head>
+<body>
+  <script src="/script.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll("pre code").forEach(function(block) {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
+  <script>
+    window.onload = function() {
+      openNav();
+    };
+  </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a class = "big">introduction</a>
+  <a href="/index.html" class = "med">preface</a>
+  <a class="big">beginning</a>
+  <a href="comp.html" class="med">complexity</a>
+  <a href="sort.html" class="med">sort</a>
+  <a href="bin.html" class="med">binary search</a>
+  <a href="point.html" class="med">two pointers</a>
+  <a class = "big">data structure</a>
+  <a href="stack.html" class="med">stack</a>
+  <a href="prefix.html" class="med">prefix sum</a>
+  <a href="diff.html" class="med">difference array</a>
+  <a href="archive.html" class="big">archive</a>
+  
+</div>
+  <div id = "main" class = "code1">
+<section class="hero is-medium">
+    <div class="hero-head">
+      <div class="container">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+            </div>
+            <div class="navbar-end">
+              <a class="navbar-item is-active btn" href = "/index.html">
+                Home
+              </a>
+              <a class="btn" href="https://discord.gg/ZrBPk9JayV" target="_none" role="button"><i class="fab fa-discord"></i> Discord</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <img src="/img/logovnoi.png" width="300" height="140">
+        <h2 class="subtitle">
+          THQN Algorithm Explorer <img src = "/img/weee.gif" width = "20" height="20">
+        </h2>
+      </div>
+    </div>
+  </section>
+  
+  <section class="blog-posts">
+  <div class="container">
+    <div class="columns">
+      <div>
+      <p class="text">Difference Array là một kỹ thuật được sử dụng để thực hiện các thao tác cộng đồng với mảng một cách hiệu quả. Nó giúp giảm thiểu đáng kể thời gian thực hiện nhiều phép cộng liên tiếp trên một phạm vi trong mảng.</p>
+<br>
+<br>
+<p class="text">Để hiểu rõ hơn, hãy xem xét bài toán sau: Bạn có một mảng \(A\) gồm \(N\) phần tử, và bạn muốn thực hiện \(Q\) truy vấn cộng trên mảng này. Mỗi truy vấn được biểu diễn bởi ba số nguyên \(l\), \(r\) và \(x\), có ý nghĩa cộng \(x\) vào tất cả các phần tử từ vị trí \(l\) đến \(r\) trong mảng \(A\). Nếu bạn thực hiện mỗi truy vấn bằng cách duyệt từng phần tử trong đoạn từ \(l\) đến \(r\) và thực hiện phép cộng, thì độ phức tạp thời gian của các truy vấn sẽ là \(O(Q \cdot (r - l + 1))\), với \(r - l + 1\) là số lượng phần tử trong đoạn.</p>
+<br>
+<br>
+<p class="text">Difference Array giúp ta giải quyết bài toán này một cách hiệu quả hơn.</p>
+<br>
+<br>
+<p class="text">Difference Array được xây dựng dựa trên mảng auxiliary, thường được gọi là \(d[]\).</p>
+<br>
+<br>
+<p class="text">Bước 1: Khởi tạo mảng \(d[]\) với kích thước bằng với kích thước của mảng \(A\), và tất cả các phần tử đều bằng 0 ban đầu.</p>
+<br>
+<br>
+<p class="text">Bước 2: Để thực hiện truy vấn cộng vào đoạn từ \(l\) đến \(r\) với giá trị \(x\), ta thực hiện hai thao tác:</p>
+<br>
+<br>
+<li class="text">Cộng \(x\) vào \(d[l]\).</li>
+<li class="text">Trừ \(x\) từ \(d[r+1]\). (Nếu \(r+1\) vượt qua kích thước của mảng, ta bỏ qua bước này).</li>
+<br>
+<br>
+<p class="text">Bước 3: Sau khi đã thực hiện tất cả các truy vấn, ta tính mảng prefix sum của \(d[]\). Mảng prefix sum của \(d[]\) chính là mảng gốc \(A\) sau khi đã thực hiện các truy vấn.</p>
+<br>
+<br>
+<strong class="text">Độ phức tạp thời gian:</strong>
+<br>
+<br>
+<li class="text">Độ phức tạp thời gian để thực hiện một truy vấn cộng trên Difference Array là \(O(1)\), vì ta chỉ thay đổi hai phần tử trong mảng \(d[]\).</li>
+<br>
+<br>
+<li class="text">Độ phức tạp thời gian để tính mảng prefix sum của \(d[]\) là \(O(N)\), với \(N\) là kích thước của mảng \(A\).</li>
+<br>
+<br>
+<strong class="text">Độ phức tạp không gian:</strong>
+<br>
+<br>
+<li class="text">Độ phức tạp không gian của Difference Array là \(O(N)\), vì ta cần một mảng \(d[]\) có kích thước bằng với kích thước của mảng \(A\).</li></p>
+        <br>
+        <br>
+        <li class = "text">Example:</li>
+      <pre class = "code"><code class = "language-cpp">vector&lt;int> buildDifferenceArray(const vector&lt;int>& a) {
+    int n = (int)a.size();
+
+    vector&lt;int> differenceArray(n - 1);
+
+    for (int i = 0; i &lt; n - 1; i++)
+        differenceArray[i] = a[i + 1] - a[i];
+
+    return differenceArray;
+}
+      
+void updateRange(vector&lt;int>& diffArray, int l, int r, int val) {
+    diffArray[l] += val;
+    if (r + 1 &lt; diffArray.size()) {
+        diffArray[r + 1] -= val;
+    }
+}</code></pre>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+</body>
+</html>
