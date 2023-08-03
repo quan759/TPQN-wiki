@@ -89,83 +89,76 @@
   <div class="container">
     <div class="columns">
       <div>
-      <p class = "text">Two Pointers (2 con trỏ) là một kỹ thuật được sử dụng phổ biến trong lập trình thi đấu để giải quyết các bài toán tối ưu hóa, tìm kiếm và sắp xếp mảng. Ý tưởng của kỹ thuật này là sử dụng hai con trỏ chạy trên mảng với các quy tắc cụ thể để giải quyết bài toán.<p>
-      <br>
-      <br>
-        <p class = "text">Kỹ thuật Two Pointers được sử dụng trong nhiều bài toán như tìm kiếm cặp số có tổng bằng một số x, tìm kiếm ba số có tổng bằng một số x, tìm kiếm đoạn con có tổng lớn nhất, tìm kiếm đoạn con có tổng bằng một số x, v.v. Kỹ thuật này cũng có thể được kết hợp với các phương pháp khác để giải quyết các bài toán phức tạp hơn.</p>
+      <p class = "text">
+        </p>
+        <p class = "text">
+          Mảng là một cấu trúc dữ liệu cơ bản trong lập trình, thường được sử dụng để lưu trữ một tập hợp các phần tử có cùng kiểu dữ liệu. Trong lập trình thi đấu, mảng là một công cụ quan trọng giúp thao tác với dữ liệu một cách hiệu quả.
+        </p>
         <br>
         <br>
-      <li class = "text">Hai con trỏ thường được đặt ở hai đầu mảng hoặc ở các vị trí khác nhau trên mảng.</li>
-      <br>
-      <br>
-<li class = "text">Các con trỏ cùng di chuyển hoặc di chuyển theo quy tắc cụ thể dựa trên yêu cầu của bài toán.</li>
+        <p class = "text">Mảng được đặc trưng bởi số phần tử và kiểu dữ liệu của các phần tử trong mảng. Khi khai báo một mảng, ta cần chỉ định kiểu dữ liệu của phần tử và số lượng phần tử của mảng. Ví dụ, để khai báo một mảng các số nguyên có 5 phần tử, ta sử dụng cú pháp sau:</p>
         <br>
         <br>
-        <li class = "text">Tại mỗi bước, ta kiểm tra điều kiện để di chuyển con trỏ sao cho đạt được kết quả mong muốn.</li>
+        <pre class = "code"><code class = "language-cpp">int arr[5]; // Khai báo mảng các số nguyên có 5 phần tử</code></pre>
         <br>
         <br>
-        <li class = "text">Kỹ thuật Two Pointers thường giúp giảm đáng kể độ phức tạp thời gian so với các phương pháp tìm kiếm và sắp xếp thông thường.</li>
+        <p class = "text">
+          Mỗi phần tử trong mảng được truy cập thông qua chỉ số (index) của nó. Chỉ số của mảng bắt đầu từ 0 đến (số phần tử - 1). Ví dụ, để truy cập phần tử thứ 3 trong mảng arr, ta sử dụng cú pháp:
+        </p>
         <br>
         <br>
-        <li class = "text">Example:</li>
+        <pre class = "code"><code class = "language-cpp">int x = arr[2]; // Lấy giá trị của phần tử thứ 3 (chỉ số 2) trong mảng arr</code></pre>
         <br>
         <br>
-<pre class = "code"><code class = "language-cpp">#include &lt;iostream>
-#include &lt;vector>
-#include &lt;algorithm>
-
+        <p class = "text">
+          Để gán giá trị cho phần tử trong mảng, ta sử dụng cú pháp tương tự:
+        </p>
+        <br>
+        <br>
+        <pre class = "code"><code class = "language-cpp">arr[2] = 10; // Gán giá trị 10 cho phần tử thứ 3 (chỉ số 2) trong mảng arr</code></pre>
+        <br>
+        <br>
+        <p class = "text">Mảng có thể được sử dụng để lưu trữ các dữ liệu số nguyên, số thực, ký tự, chuỗi ký tự và các kiểu dữ liệu tùy chỉnh khác.</p>
+        <br>
+        <br>
+        <p class = "text">
+          Một số ví dụ về cách khai báo và sử dụng mảng trong C++:
+        </p>
+        <br>
+        <br>
+        <pre class = "code"><code class = "language-cpp">#include &lt;iostream>
 using namespace std;
 
-vector&lt;int> twoSum(vector&lt;int>& nums, int target) {
-    vector&lt;int> result;
-    int left = 0;
-    int right = nums.size() - 1;
-
-    // Sắp xếp mảng
-    sort(nums.begin(), nums.end());
-
-    while (left &lt; right) {
-        int sum = nums[left] + nums[right];
-        if (sum == target) {
-            // Tìm thấy kết quả, lưu vào vector result
-            result.push_back(nums[left]);
-            result.push_back(nums[right]);
-            return result;
-        } else if (sum &lt; target) {
-            // Tăng con trỏ left nếu tổng nhỏ hơn target
-            left++;
-        } else {
-            // Giảm con trỏ right nếu tổng lớn hơn target
-            right--;
-        }
-    }
-
-    // Không tìm thấy kết quả
-    return result;
-}
-
 int main() {
-    vector&lt;int> nums = {2, 7, 11, 15};
-    int target = 9;
+    // Khai báo mảng các số nguyên có 5 phần tử
+    int arr[5];
 
-    vector&lt;int> result = twoSum(nums, target);
+    // Gán giá trị cho các phần tử trong mảng
+    arr[0] = 10;
+    arr[1] = 20;
+    arr[2] = 30;
+    arr[3] = 40;
+    arr[4] = 50;
 
-    if (result.size() == 2) {
-        cout &lt;&lt; "Hai so co tong bang " &lt;&lt; target &lt;&lt; " la: " &lt;&lt; result[0] &lt;&lt; " va " &lt;&lt; result[1];
-    } else {
-        cout &lt;&lt; "Khong tim thay hai so co tong bang " &lt;&lt; target &lt;&lt; " trong mang.";
-    }
+    // Truy cập và in giá trị của các phần tử trong mảng
+    cout &lt;&lt; arr[0] &lt;&lt; " "; // In ra giá trị 10
+    cout &lt;&lt; arr[1] &lt;&lt; " "; // In ra giá trị 20
+    cout &lt;&lt; arr[2] &lt;&lt; " "; // In ra giá trị 30
+    cout &lt;&lt; arr[3] &lt;&lt; " "; // In ra giá trị 40
+    cout &lt;&lt; arr[4] &lt;&lt; endl; // In ra giá trị 50
 
     return 0;
 }</code></pre>
         <br>
         <br>
-      <li class = "text">Độ phức tạp thời gian: \(O(n\log n)\) cho việc sắp xếp mảng và \(O(n)\) cho kỹ thuật 2 con trỏ
-</li>
+        <p class = "text">
+          Trong ví dụ trên, chúng ta đã khai báo một mảng arr có 5 phần tử và gán giá trị cho các phần tử của mảng. Sau đó, chúng ta sử dụng lệnh cout để in ra giá trị của các phần tử trong mảng.
+        </p>
         <br>
         <br>
-      <li class = "text">Độ phức tạp không gian: \(O(1)\). Thuật toán chỉ sử dụng một số biến cố định không phụ thuộc vào kích thước đầu vào. Không có bất kỳ cấu trúc dữ liệu bổ sung nào được sử dụng trong thuật toán.
-</li>
+        <p class = "text">
+          Mảng cũng có thể được sử dụng để lưu trữ các đối tượng tùy chỉnh và có thể thực hiện nhiều thao tác phức tạp hơn như sắp xếp, tìm kiếm và phân chia dữ liệu. Trong lập trình thi đấu, việc sử dụng mảng một cách hiệu quả là rất quan trọng để giải quyết các bài toán có liên quan đến dữ liệu.
+        </p>
       </div>
     </div>
   </div>

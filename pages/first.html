@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THQN Algorithm Explorer</title>
+  <script src="https://kit.fontawesome.com/15181efa86.js" crossorigin="anonymous"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML"></script>
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+  <script src="/script.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll("pre code").forEach(function(block) {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
+  <script>
+    window.onload = function() {
+      openNav();
+    };
+  </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  
+  <a class = "big">introduction</a>
+  <a href="index.html" class = "med">about</a>
+  
+  <a class="big">preface</a>
+  <a href="first.html" class ="med">first cpp program</a>
+  <a href="arr.html" class="med">array</a>
+  <a href="inp.html" class="med">input & output with files</a>
+  <a href="comp.html" class="med">complexity</a>
+  
+  <a class="big">data structure & algorithms</a>
+  <a href="sort.html" class="med">sort</a>
+  <a href="point.html" class="med">two pointers</a>
+  <a href="bin.html" class="med">binary search</a>
+  
+  <a href="stack.html" class="med">stack</a>
+  <a href="prefix.html" class="med">prefix sum</a>
+  <a href="diff.html" class="med">difference array</a>
+
+  <a class="big">string</a>
+
+  <a class="big">mathematics</a>
+  
+  <a href="archive.html" class="big">archive</a>
+</div>
+<div id = "main" class = "code1">
+<section class="hero is-medium">
+    <div class="hero-head">
+      <div class="container">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+            </div>
+            <div class="navbar-end">
+              <a class="navbar-item is-active btn" href = "index.html">
+                Home
+              </a>
+              <a class="btn" href="https://discord.gg/ZrBPk9JayV" target="_none" role="button"><i class="fab fa-discord"></i> Discord</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <img src="/img/logovnoi.png" width="300" height="140">
+        <h2 class="subtitle">
+          THQN Algorithm Explorer <img src = "/img/weee.gif" width = "20" height="20">
+        </h2>
+      </div>
+    </div>
+  </section>
+  <section class="blog-posts">
+  <div class="container">
+    <div class="columns">
+      <div>
+      <p class = "text">
+        </p>
+        <p class = "text">
+          Dưới đây là ví dụ về chương trình C++ đơn giản nhất:
+        </p>
+        <br>
+        <br>
+        <pre class = "code"><code class = "language-cpp">#include &lt;iostream>
+using namespace std;
+int main() {
+    cout &lt;&lt; "Hello, World!" &lt;&lt; endl;
+    return 0;
+}</code></pre>
+        <br>
+        <br>
+        <p class = "text">
+          Trong chương trình trên, chúng ta sử dụng câu lệnh #include &lt;iostream> để bao gồm thư viện iostream của C++. Thư viện này cung cấp các công cụ cho việc nhập và xuất dữ liệu.
+        </p>
+        <br>
+        <br>
+        <p class = "text">
+          Dòng int main() là điểm bắt đầu của chương trình. Tất cả mã C++ chạy trong hàm main(). 'using namespace std;' Dùng để gọi trực tiếp các thành phần của không gian tên "std", tức là thay vì phải viết std::cout thì chúng ta chỉ cần viết cout.
+        </p>
+        <br>
+        <br>
+        <p class = "text">
+          Trong ví dụ này, chúng ta sử dụng cout để xuất chuỗi "Hello, World!" ra màn hình và endl để thêm dấu xuống dòng.
+        </p>
+        <br>
+        <br>
+        <p class = "text">
+          Cuối cùng, chúng ta sử dụng return 0; để kết thúc chương trình và trả về giá trị 0. Return 0 còn có công dụng kết thúc chương trình.
+        </p>
+        <br>
+        <br>
+        <li class = "text">Input and Output:</li>
+        <br>
+        <br>
+        <p class = "text">
+          Trong lập trình thi đấu, chúng ta thường sử dụng cin để nhập dữ liệu từ bàn phím và cout để xuất dữ liệu ra màn hình. Dưới đây là ví dụ:
+        </p>
+        <br>
+        <br>
+        <pre class = "code"><code class = "language-cpp">#include &lt;iostream>
+using namespace std;
+int main() {
+    int x;
+    cout &lt;&lt; "Enter a number: ";
+    cin >> x;
+    cout &lt;&lt; "You entered: " &lt;&lt; x &lt;&lt; std::endl;
+    return 0;
+}</code></pre>
+        <br>
+        <br>
+        <p class = "text">
+          Trong ví dụ trên, chúng ta khai báo biến x để lưu trữ số nguyên nhập từ bàn phím. Sau đó, chúng ta sử dụng cin để nhập giá trị vào biến x. Cuối cùng, chúng ta sử dụng cout để xuất giá trị của biến x ra màn hình.
+        </p>
+        <br>
+        <br>
+        <li class = "text">Variables and Data Types:</li>
+        <br>
+        <br>
+        <p class = "text">
+          Trong C++, chúng ta phải khai báo biến trước khi sử dụng. Mỗi biến có một kiểu dữ liệu xác định loại dữ liệu mà nó có thể chứa. Dưới đây là ví dụ về khai báo biến và các kiểu dữ liệu cơ bản:
+        </p>
+        <br>
+        <br>
+        <pre class = "code"><code class = "language-cpp">#include &lt;iostream>
+using namespace std;
+int main() {
+    int age = 25; // Kiểu dữ liệu số nguyên
+    double height = 1.75; // Kiểu dữ liệu số thực
+    char grade = 'A'; // Kiểu dữ liệu ký tự
+    bool isStudent = true; // Kiểu dữ liệu logic (đúng/sai)
+    
+    cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+    cout &lt;&lt; "Height: " &lt;&lt; height &lt;&lt; endl;
+    cout &lt;&lt; "Grade: " &lt;&lt; grade &lt;&lt; endl;
+    cout &lt;&lt; "Is student: " &lt;&lt; isStudent &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+        <br>
+        <br>
+        <p class = "text">
+          Trong ví dụ trên, chúng ta khai báo các biến age, height, grade và isStudent với các kiểu dữ liệu tương ứng. Sau đó, chúng ta sử dụng cout để xuất giá trị của các biến ra màn hình.
+        </p>
+        <br>
+        <br>
+        <li class = "text">
+          Operators:
+        </li>
+        <br>
+        <br>
+        <p class = "text">
+          Trong C++, chúng ta có nhiều loại toán tử để thực hiện các phép tính. Dưới đây là ví dụ về sử dụng các toán tử cơ bản:
+        </p>
+        <br>
+        <br>
+        <pre class = "code"><code class = "language-cpp">#include &lt;iostream>
+using namespace std;
+int main() {
+    int a = 5, b = 3;
+    
+    int sum = a + b; // Phép cộng
+    int diff = a - b; // Phép trừ
+    int product = a * b; // Phép nhân
+    int quotient = a / b; // Phép chia (chia lấy phần nguyên)
+    int remainder = a % b; // Phép chia (lấy phần dư)
+    
+    cout &lt;&lt; "Sum: " &lt;&lt; sum &lt;&lt; endl;
+    cout &lt;&lt; "Difference: " &lt;&lt; diff &lt;&lt; endl;
+    cout &lt;&lt; "Product: " &lt;&lt; product &lt;&lt; endl;
+    cout &lt;&lt; "Quotient: " &lt;&lt; quotient &lt;&lt; endl;
+    cout &lt;&lt; "Remainder: " &lt;&lt; remainder &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+        <br>
+        <br>
+        <p class = "text">
+          Trong ví dụ trên, chúng ta khai báo hai biến a và b. Sau đó, chúng ta sử dụng các toán tử +, -, *, / và % để thực hiện các phép tính và gán kết quả vào các biến tương ứng. Cuối cùng, chúng ta sử dụng cout để xuất giá trị của các biến ra màn hình.
+        </p>
+
+        <br>
+        <br>
+        <li class = "text">Selection Statements</li>
+        <br>
+        <br>
+        <p class = "text">
+          Cấu trúc rẽ nhánh if-else là một cấu trúc điều khiển được sử dụng trong lập trình để kiểm tra điều kiện và thực thi các khối mã khác nhau dựa trên kết quả của điều kiện. Nó cho phép bạn thực hiện các hành động khác nhau tùy thuộc vào điều kiện được xác định.
+
+        </p>
+        <br>
+        <br>
+        <pre class = "code"><code class = "language-cpp">#include &lt;iostream>
+using namespace std;
+int main() {
+    int a;
+    cin &gt;&gt; a;
+    if (a == 1) {
+       cout &lt;&lt; 1 &lt;&lt; endl;   
+    }
+    else if (a == 2) {
+       cout &lt;&lt; 2 &lt;&lt; endl;
+    }
+    else {
+       cout &lt;&lt; 3 &lt;&lt; endl;
+    }
+    
+    return 0;
+}</code></pre>
+        <br>
+        <br>
+        <p class = "text">
+          Trong ví dụ trên, chúng ta khai báo biến a và yêu cầu người dùng nhập giá trị cho biến a. Nếu người dùng nhập 1, màn hình sẽ in ra số 1, nếu người dùng nhập 2, màn hình sẽ in ra số 2, nếu người dùng nhập 1 số khác 1 và 2, màn hình sẽ in ra số 3.
+        </p>
+        <br>
+        <br>
+        <li class = "text">
+          Operators in Selection Statements:
+        </li>
+        <br>
+        <br>
+        <p class = "text">
+          Trong cấu trúc rẽ nhánh if else, có nhiều toán tử dùng để so sánh và kiểm tra điều kiện đúng sai:
+        </p>
+        <br>
+        <br>
+        <li class = "text">
+          == : dùng để kiểm tra xem 2 giá trị có bằng nhau hay không
+        </li>
+        <br>
+        <br>
+        <li class = "text">
+          &lt;, >: dùng để kiểm tra xem giá trị thứ nhất nhỏ hơn hay lớn hơn giá trị thứ 2
+        </li>
+        <br>
+        <br>
+        <li class = "text">
+          &lt;=, >=: dùng để kiểm tra xem giá trị thứ nhất có lớn hơn hoặc bằng, nhỏ hơn hoặc bằng giá trị thứ 2 hay không
+        </li>
+        <br>
+        <br>
+        <pre class = "code"><code class = "language-cpp">#include &lt;iostream>
+using namespace std;
+int main() {
+    int a = 5, b = 2;
+    if (a % b == 0) {
+       cout &lt;&lt; "true" &lt;&lt; endl;   
+    }
+    else {
+       cout &lt;&lt; "false" &lt;&lt; endl;
+    }
+    
+    return 0;
+}</code></pre>
+        <br>
+        <br>
+        <p class = "text">Theo bạn, đoạn code trên sẽ in ra true hay false?</p>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+</div>
+</body>
+</html>
